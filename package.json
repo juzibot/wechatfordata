@@ -1,0 +1,21 @@
+{
+  "name": "wechatfordata",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-schedule": "latest",
+    "oracledb": "latest",
+    "qrcode-terminal": "^0.12.0",
+    "superagent": "^5.2.2",
+    "wechaty": "latest",
+    "wechaty-puppet-padplus": "latest"
+  }
+}
