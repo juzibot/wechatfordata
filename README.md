@@ -49,7 +49,7 @@ npm install qrcode-terminal
 rm -rf node_modules package-lock.json
 npm install
 ```
-因工作环境，本应于在windows环境下开发，如出现编译失败等情况，请运行以下命令：
+因工作环境，本应于在windows环境下开发，安装wechaty pad plus曾出现编译失败等情况，如你也出现类似情况，请尝试运行以下命令：
 
 ```
 npm install windows-build-tools@4.0.0
