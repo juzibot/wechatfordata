@@ -188,6 +188,12 @@ bot
                 await contact_for_say.say(say_someting);
                 console.log('say_someting=' + say_someting);
             })();
+        } else if(content === '天气预报') {
+            console.log('天气预报event！');
+            sayOrquiet = true;
+            let weather = await sihuo.getWeather();
+            say_someting = '今日天气\r\n' + weather.weatherTips +'\r\n' +weather.todayWeather;
+            await contact_for_say.say(say_someting)
         } else {
             sayOrquiet = false;
         }
