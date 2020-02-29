@@ -11,11 +11,16 @@
   "description": "",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "domhandler": "^3.0.0",
+    "htmlparser2": "^4.1.0",
+    "iniparser": "^1.0.5",
     "node-schedule": "latest",
     "oracledb": "latest",
     "qrcode-terminal": "^0.12.0",
     "superagent": "^5.2.2",
+    "superagent-proxy": "^2.0.0",
     "wechaty": "latest",
-    "wechaty-puppet-padplus": "latest"
+    "wechaty-puppet-padplus": "latest",
+    "xpath": "^0.0.27"
   }
 }
