@@ -9,12 +9,6 @@ let iniParser = require('iniparser');
 let config = iniParser.parseSync('./resource/config.ini');
 let proxy =  config['COMMON']['proxy'];
 
-async function getOne() { // 获取每日一句
-    let res = await req('http://wufazhuce.com/','GET')
-    let $ = cheerio.load(res.text)
-    let todayOneList = $('#carousel-one .carousel-inner .item')
-    return $(todayOneList[0]).find('.fp-one-cita').text().replace(/(^\s*)|(\s*$)/g, "");
-}
 
 async function getWeather() { //获取墨迹天气
     let url = 'https://tianqi.moji.com/weather/china/'+'liaoning'+'/'+'dalian';
@@ -95,6 +89,7 @@ module.exports ={
 };
 
 
+/*
 (async (str, type) => {
     process.on('unhandledRejection', (reason, p) => {
         console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
@@ -139,4 +134,4 @@ module.exports ={
     for (let i = 0;i < repoListNodes.length;i++) {
         console.log(console.log(repoListNodes[i].nodeValue));
     }
-})();
+})();*/

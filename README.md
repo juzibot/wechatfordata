@@ -1,70 +1,43 @@
-# wechatfordata
+---
+title: wechatfordata数据碎片化响应与BAU常规运维的探索实践
+date: 2020-03-01 13:00 +0800
+author: Kelly Cheng
+---
+> Author: [@hkenter](https://github.com/hkenter) 数据工程师-医疗,医药行业
+<!--more-->
+## 背景
+新冠疫情爆发于 2020 年2 月，某大型跨国药企业务数据的响应与维护工作随着疫情爆发迅速提升，一时间数据需求方的响应诉求迅速攀升，找到合适的开源解决方案成为目前乃至长期的救命稻草。
 
-新冠疫情爆发于 2020 年 2 月，某大型跨国药企业务数据的响应与维护工作随着疫情爆发迅速提升，一时间状态近于 pc、微信 24 小时在线，找到合适的开源解决方案成为目前乃至长期的救命稻草。
+## wechatfordata 希望解决的问题
+- 碎片化数据被动查询（已实现）
+- BAU运维监控信息的主动推送（已实现）
+- 按业务场景进行邀请并一定程度的管理微信群（计划实现）
+- 聊天内容的分析(计划实现)
 
-## Install
+## 业务分析与技术实现（基于已实现部分）
+代码参见：[GitHub](https://github.com/hkenter/wechatfordata)
+基于 [wechaty](https://github.com/Chatie/wechaty)
+### 碎片化数据被动查询 ###
+单一业务场景的数据应急需求，通常以碎片形式体现，或是阶段性有规律的需求，所以总结部分高频率、碎片化、有规律的需求，是此部分实现的前提。
 
-> 引用 Blockquotes 本应用基于 wechaty pad 协议开发，安装准备如下：
+> 比如：
+~某会议数据是否已推送？
+~目前推送活动的类型是什么？
 
-### 1. Init
+实现方案：构建此类场景的查询关键词规则，入参查询并回复
 
-> check your Node version first
+### BAU运维监控信息的主动推送 ###
+目前需要监控的BAU信息分布于两处：
+ - 位于内网的关系型数据库中
+ - 位于内网的某些web展现层
+ 
+实现方案：请求数据库监控数据，构建nodejs爬虫，爬取web层数据
 
-```
-node --version // v10.16.0 (BTW v10.0.0 < version < v11.0.0 is better)
-```
+### 开发与生产环境 ###
+目前环境均基于windows X64，对安装、部署等要求比较繁琐，且大均处于内网，对代理的要求配置也比较讲究。
 
-```
-mkdir my-padplus-bot && cd my-padplus-bot
-npm init -y
-```
+> Tips：npm环境尽量提前安装windows-build-tools@4.0.0，内网环境或代理不满足，可尝试离线安装vsbuild2015/2017
 
-### 2. Install the latest wechaty
-
-```
-npm install wechaty@next
-```
-
-### 3. Install wechaty-puppet-padplus
-
-> Notice: wechaty-puppet-padplus still in alpha test period, so we keep updating the package, you should install the latest packge by using @latest until we release the stable package.
-
-```
-npm install wechaty-puppet-padplus@latest
-```
-
-### 4. Install other dependency
-
-> There's no need to install wechaty-puppet in my-padplus-bot
-
-```
-npm install qrcode-terminal
-```
-
-### 5. Re-Install all related package
-
-> If step 1~4 can not help you install successfully, please try this suggestion, otherwise just skip it please.
-
-```
-rm -rf node_modules package-lock.json
-npm install
-```
-因工作环境，本应于在windows环境下开发，安装wechaty pad plus曾出现编译失败等情况，如你也出现类似情况，请尝试运行以下命令：
-
-```
-npm install windows-build-tools@4.0.0
-```
-
-## Usage
-
-```
-
-```
-
-## Contributing
-
-PRs accepted.
-
-## License
-
-MIT © Kelly Cheng
+ 
+## 结尾
+wechatfordata 依然是一个正在开发中的项目, 欢迎留言交流你对它的看法
