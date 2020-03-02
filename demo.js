@@ -24,7 +24,7 @@ async function onLogin (user) {
     // 登陆后创建连接池
     await OrclUtil.initPool();
     // 登陆后创建定时任务
-    await BAU_schedule.initBAU();
+    await BAU_schedule.initBAU(bot);
 }
 
 //scan

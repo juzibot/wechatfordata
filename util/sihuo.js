@@ -85,7 +85,7 @@ function closeHTML(str){
 }
 
 module.exports ={
-    getOne,getWeather
+    getWeather
 };
 
 
