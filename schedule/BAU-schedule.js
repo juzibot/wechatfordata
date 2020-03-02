@@ -2,7 +2,7 @@ const schedule = require('../util/schedule-util');
 const OrclUtil = require('../util/orcl-util');
 
 // 创建每日定时任务
-async function initBAU() {
+async function initBAU(bot) {
     console.log(`设定每日BAU Daily Check`);
     // ESM JOB Check
     let say_bau = '';
@@ -34,7 +34,7 @@ async function initBAU() {
     rule = schedule.getScheduleRule();
     rule.dayOfWeek = [0, new schedule.getScheduleRange(1, 5)];
     rule.hour = 8;
-    rule.minute = 10;
+    rule.minute = 53;
     schedule.setSchedule(rule, async () => {
         (async () => {
             say_bau = '---Webcasting Sync Check---\r\n';
@@ -43,7 +43,7 @@ async function initBAU() {
             let room_doc_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_DOCUMENT`);
             let aud_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_AUDIENCE`);
             let inaud_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_INAV_AUDIENCE`);
-            let qes_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_QUESTION`);
+            let qes_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_SURVEY`);
             let ans_count = await OrclUtil.executeSql('edwpool', `SELECT count(*) FROM webcast.AZ_WEBCAST_STG_SURVEY_ANSWER`);
             say_bau += '房间同步数量：' + room_count.rows[0][0] + '\r\n' + '照片同步数量：' + room_pic_count.rows[0][0] + '\r\n' +
                 'document同步数量：' + room_doc_count.rows[0][0] + '\r\n' + '参会者同步数量：' + aud_count.rows[0][0] + '\r\n' +

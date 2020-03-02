@@ -4,8 +4,10 @@ const QrcodeTerminal = require('qrcode-terminal');
 const OrclUtil = require('./util/orcl-util');
 const sihuo = require('./util/sihuo')
 const BAU_schedule = require("./schedule/BAU-schedule");
+let iniParser = require('iniparser');
+let config = iniParser.parseSync('resource/config.ini');
 
-const token = 'puppet_padplus_497f5aeae122d950';
+const token = config['SECRET']['token'];
 
 const puppet = new PuppetPadplus({
     token,
@@ -24,7 +26,7 @@ async function onLogin (user) {
     // 登陆后创建连接池
     await OrclUtil.initPool();
     // 登陆后创建定时任务
-    await BAU_schedule.initBAU();
+    await BAU_schedule.initBAU(bot);
 }
 
 //scan
